@@ -222,79 +222,10 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     window.innerWidth < 768 ? null : this.animationPicture();
   }
 
-  // get renderMobileView() {
-  //   return html`
-  //   <div class="animated-section">
-  //     <div class="animated-section__container-title">
-  //         ${this.title && html`
-  //           <kw-title>
-  //             <h3>${this.subtitle}</h3>
-  //             <h2>${this.title}</h2>
-  //           </kw-title>
-  //         `}
-  //     </div>
-  //     <div class="animated-section__container-picture">
-  //       ${this.imageData ? html`
-  //         <img class="animated-section__picture" src="${this.imageData.src}" alt="${this.imageData.alt}" />
-  //       ` : this.videoData ? html`
-  //         <img class="animated-section__picture" src="${this.videoData.srcmobile}" alt="${this.videoData.alt}" />
-  //       ` : null}
-  //     </div>
-  //     <div class="animated-section__container-description">
-  //       <p class="animated-section__description-text">
-  //           ${this.descriptionText}
-  //       </p>
-  //       ${this.urlLink && html`
-  //         <a 
-  //           class="link link--raised link--text-large"
-  //           target="_blank" 
-  //           href="${this.urlLink.href}">
-  //           ${this.urlLink.content}
-  //         </a>
-  //       `} 
-  //     </div>
-  //   </div>`;
-  // }
 
   get renderDesktopView() {
     const positionTextReverese = { reverseText: this.positionText === 'after' };
-    return  !this.animation ? html`
-    <div class="animated-section ${classMap(positionTextReverese)}">
-        <div class="animated-section__container-description__animation">
-            ${this.title && html`
-            <kw-title>
-                <h3>${this.subtitle}</h3>
-                <h2>${this.title}</h2> 
-            </kw-title>
-            `}
-           <p class="animated-section__description-text">
-                ${this.descriptionText}
-            </p> 
-            ${this.urlLink && html`
-              <a
-                class="link link--raised link--text-large"
-                target="_blank"
-                href="${this.urlLink.href}">
-                ${this.urlLink.content}
-            </a>
-            `}
-        </div>
-    <div class="animated-section__container-picture">
-    
-        ${this.imageData && html`
-          <img class="animated-section__picture-animation" src="${this.imageData.src}" alt="${this.imageData.alt}" />
-        `}
-        ${this.motionVideo && this.videoData ? html`
-          <img class="animated-section__picture-animation" src="${this.videoData.srcmobile}" alt="${this.videoData.alt}" />
-        ` : this.videoData ? html`
-          <video id="video" class="animated-section__picture-animation" muted >
-            <source src="${this.videoData.src}" type="${this.videoData.type}">
-           </video>`
-    : null}
-      </div>
-  </div> `
-    
-    : html`
+    return  html`
     <div class="animated-section ${classMap(positionTextReverese)}">
             ${this.title && html`
             <kw-title class="title animated-section__description-text">
@@ -313,10 +244,10 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
                 ${this.urlLink.content}
             </a>
             `}
-        ${this.imageData && html`<img class="animated-section__picture-animation image" src="${this.imageData.src}" alt="${this.imageData.alt}" />
+        ${this.imageData && html`<img class="animated-section__picture-animation media" src="${this.imageData.src}" alt="${this.imageData.alt}" />
         `}
         ${this.videoData &&  html`
-          <video class="animated-section__picture"  muted >
+          <video class="animated-section__picture media"  muted >
             <source src="${this.videoData.src}" type="${this.videoData.type}">
            </video>
           `}

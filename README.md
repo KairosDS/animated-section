@@ -1,27 +1,14 @@
-# tabs-list
+# animated-section
 
-Lit-Element web component tabs list.
+Lit-Element web component animated section.
 
 
 The data is passed using the content of the html code inside the component. The following structure should be used with the same data-id names:
 
 ```
-<tabs-list>
-  <div data-id="icons">
-    <button>
-      <img data-id="iconImage" src="" alt="" data-content=""/>
-    </button>
-  </div>
-  <div data-id="tabs">
-    <div>
-      <h3 data-id="title"></h3>
-      <h3 data-id="subTitle">subtitleTab1</h3>
-      <div data-id="description"></div>
-      <img data-id="image" src="" alt=""/>
-      <a data-id="url" href="/"></a>
-    </div>
-  </div>
-</tabs-list>
+<animated-section>
+  
+</animated-section>
 
 ```
 
@@ -32,8 +19,8 @@ The data is passed using the content of the html code inside the component. The 
 
 ## There are three views in the component that are controlled by using the attributes:
 
-### Tabs-list no attribute
-<img src="demo/assets/tabs-list.png" alt="Scroll tabs" style=" margin-right: 10px; width:450px;" />
+### animated-section no attribute
+<img src="demo/assets/animated-section.png" alt="Scroll tabs" style=" margin-right: 10px; width:450px;" />
 
 ### Tabs scroll-tabs="true"
 <img src="demo/assets/scroll-tabs.png" alt="Scroll tabs" style=" margin-right: 10px; width:500px;" />
@@ -46,9 +33,9 @@ The data is passed using the content of the html code inside the component. The 
 ## Demo
 
 ```
-<h2>Basic tabs-list Demo</h2>
+<h2>Basic animated-section Demo</h2>
 <h3>Demo</h3>
-<tabs-list listen-outside-event="item:selected" collapsible-tabs="true" img-icon-selected="/demo/assets/arrow-open.svg" img-icon-not-selected="/demo/assets/plus-circle.svg" break-line-separator = ";" >
+<animated-section>
         <div data-id="icons">
           <button>
             <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
@@ -80,14 +67,14 @@ The data is passed using the content of the html code inside the component. The 
             <a data-id="url" href="/">linktab</a>
           </div>
         </div>
-      </tabs-list>
+      </animated-section>
 
 ```
 <!---
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="tabs-list.html">
+    <link rel="import" href="animated-section.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -95,7 +82,7 @@ The data is passed using the content of the html code inside the component. The 
 -->
 
 ```html
-<tabs-list></tabs-list>
+<animated-section></animated-section>
 ```
 
 ## Properties
