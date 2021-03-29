@@ -23,13 +23,18 @@ export const AnimatedSectionStyles = css`
   .animated-section {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
-    gap: 0px 0px;
+    gap: 0px 20px;
   }
-  .title { grid-area: 1 / 1 / 2 / 2; }
-  .text { grid-area: 2 / 1 / 3 / 2; }
-  .media { grid-area: 1 / 2 / 4 / 3; }
-  .link { grid-area: 3 / 1 / 4 / 2; }
+  .title-after { grid-area: 1 / 2 / 2 / 3; }
+  .text-after { grid-area: 2 / 2 / 3 / 3; }
+  .media-after { grid-area: 1 / 1 / 4 / 2; }
+  .link-after { grid-area: 3 / 2 / 4 / 3; }
   
+  .title-before { grid-area: 1 / 1 / 2 / 2; }
+  .text-before { grid-area: 2 / 1 / 3 / 2; }
+  .media-before { grid-area: 1 / 2 / 4 / 3; }
+  .link-before { grid-area: 3 / 1 / 4 / 2; }
+
   .animated-section__description-text {
     position: relative;
     opacity: 0;
@@ -41,12 +46,12 @@ export const AnimatedSectionStyles = css`
     height: 170px;
   }
   
-  .animated-section__picture-lateral_left {
-    animation: lateral_left 1s 1;
-    position: relative;
-    display: block;
-    width: 100%;
-  }
+  // .animated-section__picture-lateral_left {
+  //   animation: lateral_left 1s 1;
+  //   position: relative;
+  //   display: block;
+  //   width: 100%;
+  // }
 
   .move_ascension__animation {
     opacity: 1;
@@ -71,12 +76,16 @@ export const AnimatedSectionStyles = css`
   .animated-section__picture-animation {
     opacity: 0;
     display: block;
-    width: 100%;
   }
 
-  .move_left {
+  .move-before {
     opacity: 1;
     animation: lateral_left  2s 1;
+  }
+
+  .move-after {
+    opacity: 1;
+    animation: lateral_right  2s 1;
   }
   
   @keyframes lateral_left {
@@ -93,6 +102,19 @@ export const AnimatedSectionStyles = css`
     }
   }
   
+  @keyframes lateral_right {
+    0% {
+      transform: translateX(-150px) ;
+      opacity: 0;
+    }
+    50% { 
+      opacity: 0,5;
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px) ;
+    }
+  }
  
 }
 

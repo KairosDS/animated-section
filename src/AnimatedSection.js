@@ -32,11 +32,13 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
       /**
        * Property that  dictates the placement of text and image
        * @property
-       * @type { after | before }
+       * @type String
        *
        */
       positionText: {
         type: String,
+        attribute: 'position-text'
+
       },
 
       /**
@@ -84,6 +86,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
        */
       descriptionText: {
         type: String,
+
       },
       /**
        * Url Link of the section
@@ -148,7 +151,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
   constructor() {
     super();
-    this.positionText = 'before';
+    this.positionText = '';
     this.title = '';
     this.subtitle = '';
     this.descriptionText = '';
@@ -176,21 +179,20 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
     animationPicture() {
       if (this.animation){
-        console.log('hola')
           const section = this.shadowRoot.querySelector('.animated-section')
           const picture =this.shadowRoot.querySelector('.animated-section__picture-animation');
           const description = [...this.shadowRoot.querySelectorAll('.animated-section__description-text')];
           const video = this.shadowRoot.getElementById('video')
           const videoData = this.videoData;
           const videoMotion = this.motionVideo;
-
+          const classAnimatedPicture= `move-${this.positionText}`
           const options = {
             threshold: 0.8,
           };
     /* eslint-disable-next-line */
       function callBack(entries, observer) {
         if (entries[0].isIntersecting) {
-          picture.classList.add('move_left');
+          picture.classList.add(classAnimatedPicture);
           description.forEach((item)=>{
             item.classList.add('move_ascension__animation')
           })
@@ -211,8 +213,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
           }
         }
       
-    
-  
     const animationObserver  = new IntersectionObserver(callBack, options);
     animationObserver.observe(section);
   }
@@ -224,30 +224,30 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
 
   get renderDesktopView() {
-    const positionTextReverese = { reverseText: this.positionText === 'after' };
     return  html`
-    <div class="animated-section ${classMap(positionTextReverese)}">
+    <div class="animated-section">
             ${this.title && html`
-            <kw-title class="title animated-section__description-text">
+            <kw-title class="title-${this.positionText} animated-section__description-text">
                 <h3>${this.subtitle}</h3>
                 <h2>${this.title}</h2> 
             </kw-title>
             `}
-           <p  class=" text animated-section__description-text">
+           <p  class="text-${this.positionText}
+           animated-section__description-text">
                 ${this.descriptionText}
             </p> 
             ${this.urlLink && html`
               <a
-                class="link  animated-section__description-text link--raised link--text-large"
+                class="link-${this.positionText}  animated-section__description-text link--raised link--text-large"
                 target="_blank"
                 href="${this.urlLink.href}">
                 ${this.urlLink.content}
             </a>
             `}
-        ${this.imageData && html`<img class="animated-section__picture-animation media" src="${this.imageData.src}" alt="${this.imageData.alt}" />
+        ${this.imageData && html`<img class="animated-section__picture-animation media-${this.positionText}" src="${this.imageData.src}" alt="${this.imageData.alt}" />
         `}
         ${this.videoData &&  html`
-          <video class="animated-section__picture media"  muted >
+          <video class="animated-section__picture media-${this.positionText}"  muted >
             <source src="${this.videoData.src}" type="${this.videoData.type}">
            </video>
           `}
