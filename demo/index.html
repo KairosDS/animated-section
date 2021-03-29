@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <title>animated-section demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script type="module" src="../animated-section.js"></script>
+    <style>
+      :root {
+        --main-font-family: 'Courier New', Courier, monospace;
+        --base-font-size: 18px;
+        --main-color: #5900ff;
+        --main-text-color: #4d4d4e;
+        --secondary-text-color: #575756;
+        --secondary-color: #0E3540;
+        --button-font-color: #FFFFFF;
+        --button-font-family: 'Arial, Helvetica, sans-serif';
+        --button-font-size: 1rem;
+        --button-line-height: 1.1;
+        --button-tab-width-mobile: 150px;
+        --button-tab-width-desktop: 250px;
+        --button-img-tab-height: 100px;
+
+      }
+      .blocks {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+      }
+      .block {
+        display:flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+      .code {
+        padding: 20px;
+        color:#FFF; 
+        background: rgb(0, 0, 0);
+      }
+      .attributes {
+        padding-left: 20px;
+      } 
+
+      .animated-section-container {
+        margin: 0 10px;
+      }
+
+      @media all and (min-width: 760px) {
+        .animated-section-container {
+        margin: 0 100px;
+      }
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic animated-section Demo</h3>
+      <div class="blocks">
+        <pre class="block code">
+          <code>
+            &lt;animated-section&gt;&lt;/animated-section&gt;
+          </code>
+        </pre>
+        <pre class="block attributes">
+          <h3>Attributes</h3>
+          <ul>
+            <li>property1 (String)</li>
+            <li>property2 (Number)</li>
+          </ul>
+        </pre>
+      </div>
+
+    <div class="animated-section-container">
+        <h2>EJEMPLO Animated Section</h2>
+      <animated-section animation="true">
+        <div>
+          <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+            <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+            <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+            <img data-id="sectionImage" src="/demo/assets/default.png" alt="IMAGE" />
+            <a data-id="sectionLink" href="/">SECTION-LINK</a>
+          </div>
+      </animated-section>
+      </div>
+  </body>
+</html>
