@@ -19,15 +19,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
   static get properties() {
     return {
-      /**
-       * Object with all data section related
-       * @property
-       * @type { Object }
-       *
-       */
-      sectionData: {
-        type: Object,
-      },
 
       /**
        * Property that  dictates the placement of text and image
@@ -39,26 +30,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
         type: String,
         attribute: 'position-text'
 
-      },
-
-      /**
-       * Name of the page for the section
-       * @property
-       * @type String
-       *
-       */
-      namePage: {
-        type: String,
-      },
-
-      /**
-       * Name of the section
-       * @property
-       * @type String
-       *
-       */
-      section: {
-        type: String,
       },
       /**
        * Title of the section
@@ -98,16 +69,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
         type: String,
       },
       /**
-       * Link Text of the section
-       * @property
-       * @type String
-       *
-       */
-      linkText: {
-        type: String,
-      },
-      /**
-       * Image Src of the section
+       * Image data of the section
        * @property
        * @type Array
        *
@@ -116,16 +78,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
         type: Array,
       },
       /**
-       * Image Alt of the section
-       * @property
-       * @type String
-       *
-       */
-      imageAlt: {
-        type: String,
-      },
-      /**
-       * Video Src of the section
+       * Video data of the section
        * @property
        * @type Array
        *
@@ -142,18 +95,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
       animation: {
         type: Boolean,
         attribute: 'animation', 
-        reflect: true
-      },
-      /**
-       * Animation incluide of the section
-       * @property
-       * @type Boolean
-       *
-       */
-       videoMobile: {
-        type: Boolean,
-        attribute: 'video-mobile', 
-        reflect: true
       },
     };
   }
@@ -168,22 +109,17 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     this.title = '';
     this.subtitle = '';
     this.descriptionText = '';
-    this.urlLink = null;
-    this.imageSrc = null;
-    this.imageAlt = '';
     this.animation = false;
   }
 
   connectedCallback() {
     super.connectedCallback();
-    console.log(this.animation)
     const childNodes = this._HTMLChildren();
     const dataSection = childNodes[0];
     this.title = dataSection.sectionTitle;
     this.subtitle = dataSection.sectionSubTitle;
     this.descriptionText = dataSection.sectionText;
     this.imageData = dataSection.sectionImage;
-    //this.imageDataTwo = dataSection.src;
     this.videoData = dataSection.sectionVideo;
     this.imageVideoData = dataSection.sectionNoVideoMobile;
     this.urlLink = dataSection.sectionLink;

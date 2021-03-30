@@ -45,6 +45,8 @@ export const AnimatedSectionStyles = css`
   margin-bottom: 20px;
 }
 
+
+
 @media(min-width: 768px) {
 
   .animated-section {
@@ -53,22 +55,29 @@ export const AnimatedSectionStyles = css`
     gap: 0px var(--grid-column-gap, 0px);
   }
   .title-after { grid-area: 1 / 2 / 2 / 3; }
+
   .text-after { grid-area: 2 / 2 / 3 / 3; }
+
   .media-after { 
     grid-area: 1 / 1 / 4 / 2;
     justify-self: center;
     align-self: center;
    }
+
   .link-after { grid-area: 3 / 2 / 4 / 3; }
   
 
+
   .title-before { grid-area: 1 / 1 / 2 / 2; }
+
   .text-before { grid-area: 2 / 1 / 3 / 2; }
+
   .media-before { 
     grid-area: 1 / 2 / 4 / 3;
     justify-self: center;
     align-self: center;
    }
+
   .link-before { grid-area: 3 / 1 / 4 / 2; }
 
 
@@ -82,6 +91,7 @@ export const AnimatedSectionStyles = css`
     height: 55px;
     width: fit-content;
   }
+
   .animated-section__description-text {
     position: relative;
   }
@@ -110,7 +120,6 @@ export const AnimatedSectionStyles = css`
     }
   }
   
-
   .animated-section__picture-animation {
     display: block;
   }
@@ -157,8 +166,7 @@ export const AnimatedSectionStyles = css`
 
 @media (prefers-reduced-motion: reduce) {
   .animated-section__container-description,
-  .animated-section__picture-lateral_left, 
-  .move_left,
+  .move-after, .move-before,
   .move_ascension__animation   
   {
     animation-name: none;
@@ -167,8 +175,7 @@ export const AnimatedSectionStyles = css`
   .animated-section__container-description__animation,
   .animated-section__picture-animation,
   .animated-section__picture,
-  .move_left,
-  .move_ascension,
+  .move-after, .move-before,
   .move_ascension__animation
    {
     opacity: 1;

@@ -38,43 +38,43 @@
       }
 
       .container-scroll {
-        height: 800px;
+        height: 200px;
         background-color: antiquewhite;
         margin: 40px 0;
       }
-      .div-hidden{
-        visibility: hidden;
-      }
+      /* .div-hidden{
+        display: none;
+      } */
 
       animated-section::part(section-title){
-        color: brown;
+        color: rgb(49, 49, 49);
         margin: 0;
         margin-bottom: 30px;
       }
       animated-section::part(section-subtitle){
-        color: rgb(42, 44, 165);
+        color: rgb(223, 156, 13);
         margin-top: 20px;
         margin-bottom: 10px;
       }
 
       animated-section::part(section-description){
-        color: rgb(42, 44, 165);
+        color: rgb(55, 55, 58);
       }
 
       animated-section::part(section-link){
         color: rgb(247, 247, 250);
-        background-color: coral;
-        border: 1px solid crimson;
+        background-color: rgb(20, 4, 79);
+        border: 1px solid  rgb(20, 4, 79);
       }
 
       animated-section::part(section-link):hover{
         color: rgb(19, 5, 5);
-        background-color: rgb(226, 166, 144);
-        border: 1px solid rgb(224, 118, 139);
+        background-color: rgb(223, 156, 13);
+        border: 1px solidrgb(223, 156, 13);
       }
 
       animated-section::part(section-media){
-        width: 200px;
+        width: 100%;
       }
       @media all and (min-width: 760px) {
         .animated-section-container {
@@ -127,6 +127,7 @@
       <animated-section position-text="after" animation="true">
         <div class="div-hidden">
           <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+          <h3 data-id="sectionSubTitle">SUBTITLE</h3>
             <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
             <img data-id="sectionNoVideoMobile" src="/demo/assets/400x200default.png" alt="IMAGE" />
             <video data-id="sectionVideo" src="/demo/assets/gifmundokairos.mp4" alt="video mimundo" type="video/mp4" ></video>
