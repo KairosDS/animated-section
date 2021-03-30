@@ -144,6 +144,17 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
         attribute: 'animation', 
         reflect: true
       },
+      /**
+       * Animation incluide of the section
+       * @property
+       * @type Boolean
+       *
+       */
+       videoMobile: {
+        type: Boolean,
+        attribute: 'video-mobile', 
+        reflect: true
+      },
     };
   }
 
@@ -173,9 +184,10 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     this.descriptionText = dataSection.sectionText;
     this.imageData = dataSection.sectionImage;
     //this.imageDataTwo = dataSection.src;
-    this.videoData = dataSection.video;
+    this.videoData = dataSection.sectionVideo;
+    this.imageVideoData = dataSection.sectionNoVideoMobile;
     this.urlLink = dataSection.sectionLink;
-    //this.motionVideo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.motionVideo = matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   
@@ -185,7 +197,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
           const section = this.shadowRoot.querySelector('.animated-section')
           const picture =this.shadowRoot.querySelector('.animated-section__picture-animation');
           const description = [...this.shadowRoot.querySelectorAll('.animated-section__description-text')];
-          const video = this.shadowRoot.getElementById('video')
+          const video = this.shadowRoot.getElementById('videoSection')
           const videoData = this.videoData;
           const videoMotion = this.motionVideo;
           const classAnimatedPicture= `move-${this.positionText}`
@@ -227,6 +239,19 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     }
   }
 
+  renderVideoOptions() {
+    const addOpacity = this.animation ? 'no_opacity' : '' ; 
+    if(this.imageVideoData && window.innerWidth < 768){
+      return html `<img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" src="${this.imageVideoData.src}" alt="${this.imageVideoData.alt}" />`
+    
+    } else {
+      return html `
+      <video id="videoSection" class="animated-section__picture-animation media-${this.positionText} ${addOpacity}"  muted >
+          <source src="${this.videoData.src}" type="${this.videoData.type}">
+      </video>
+      `
+    }
+  }
 
   get renderDesktopView() {
     const addOpacity = this.animation ? 'no_opacity' : '' ; 
@@ -251,11 +276,8 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
         ${this.imageData && html`
           <img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" src="${this.imageData.src}" alt="${this.imageData.alt}" />
         `}
-        ${this.videoData &&  html`
-          <video class="animated-section__picture media-${this.positionText} ${addOpacity}"  muted >
-            <source src="${this.videoData.src}" type="${this.videoData.type}">
-           </video>
-          `}
+
+        ${this.videoData ? this.renderVideoOptions() : '' }
   </div> 
     `;
   }
