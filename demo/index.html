@@ -7,22 +7,13 @@
     <script type="module" src="../animated-section.js"></script>
     <style>
       :root {
-        --main-font-family: 'Courier New', Courier, monospace;
-        --base-font-size: 18px;
-        --main-color: #5900ff;
-        --main-text-color: #4d4d4e;
-        --secondary-text-color: #575756;
-        --secondary-color: #0E3540;
-        --button-font-color: #FFFFFF;
-        --button-font-family: 'Arial, Helvetica, sans-serif';
-        --button-font-size: 1rem;
-        --button-line-height: 1.1;
-        --button-tab-width-mobile: 150px;
-        --button-tab-width-desktop: 250px;
-        --button-img-tab-height: 100px;
+        --main-font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+        --grid-desktop-column-width: auto;
+        --grid-column-gap: 20px; 
 
       }
       .blocks {
+       
         display:flex;
         flex-direction:row;
         flex-wrap: wrap;
@@ -55,6 +46,36 @@
         visibility: hidden;
       }
 
+      animated-section::part(section-title){
+        color: brown;
+        margin: 0;
+        margin-bottom: 30px;
+      }
+      animated-section::part(section-subtitle){
+        color: rgb(42, 44, 165);
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      animated-section::part(section-description){
+        color: rgb(42, 44, 165);
+      }
+
+      animated-section::part(section-link){
+        color: rgb(247, 247, 250);
+        background-color: coral;
+        border: 1px solid crimson;
+      }
+
+      animated-section::part(section-link):hover{
+        color: rgb(19, 5, 5);
+        background-color: rgb(226, 166, 144);
+        border: 1px solid rgb(224, 118, 139);
+      }
+
+      animated-section::part(section-media){
+        width: 200px;
+      }
       @media all and (min-width: 760px) {
         .animated-section-container {
         margin: 0 100px;
@@ -107,6 +128,7 @@
         <div class="div-hidden">
           <h2 data-id="sectionTitle">SECTION-TITLE</h2>
             <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+            <img data-id="sectionNoVideoMobile" src="/demo/assets/400x200default.png" alt="IMAGE" />
             <video data-id="sectionVideo" src="/demo/assets/gifmundokairos.mp4" alt="video mimundo" type="video/mp4" ></video>
           </div>
       </animated-section>

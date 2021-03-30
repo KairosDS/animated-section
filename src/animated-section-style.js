@@ -1,7 +1,9 @@
 import { css } from 'lit-element';
 
 export const AnimatedSectionStyles = css`
-
+:host {
+  font-family: var(--main-font-family), sans-serif;
+}
 .animated-section {
   display: grid;
   grid-template-columns: auto;
@@ -17,13 +19,38 @@ export const AnimatedSectionStyles = css`
   position: relative;
   opacity: 1;
 }
+.animated-section__picture-animation {
+  width: 100%;
+}
+
+.link--text {
+  width: 100%;
+	box-sizing: border-box;
+	background-color: inherit;
+	border: none;
+	cursor: pointer;
+	font-family: sans-serif;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.2s ease-in-out;
+  background-color:  #0e3540;
+	border: 1px solid #0e3540;
+	border-radius: 5px;
+	color: #ffffff;
+  margin-bottom: 20px;
+}
 
 @media(min-width: 768px) {
 
   .animated-section {
-    grid-template-columns: auto auto;
+    grid-template-columns: var( --grid-desktop-column-width, auto) var( --grid-desktop-column-width, auto);
     grid-template-rows: auto auto auto;
-    gap: 0px 20px;
+    gap: 0px var(--grid-column-gap, 0px);
   }
   .title-after { grid-area: 1 / 2 / 2 / 3; }
   .text-after { grid-area: 2 / 2 / 3 / 3; }
@@ -47,6 +74,13 @@ export const AnimatedSectionStyles = css`
 
   .no_opacity {
     opacity: 0;
+  }
+
+  .link--text {
+    margin-bottom: 0;
+    padding: 20px;
+    height: 55px;
+    width: fit-content;
   }
   .animated-section__description-text {
     position: relative;

@@ -242,11 +242,13 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
   renderVideoOptions() {
     const addOpacity = this.animation ? 'no_opacity' : '' ; 
     if(this.imageVideoData && window.innerWidth < 768){
-      return html `<img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" src="${this.imageVideoData.src}" alt="${this.imageVideoData.alt}" />`
+      return html `<img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}"
+      part="section-media" src="${this.imageVideoData.src}" alt="${this.imageVideoData.alt}" />`
     
     } else {
       return html `
-      <video id="videoSection" class="animated-section__picture-animation media-${this.positionText} ${addOpacity}"  muted >
+      <video id="videoSection" class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" 
+      part="section-media" muted >
           <source src="${this.videoData.src}" type="${this.videoData.type}">
       </video>
       `
@@ -259,22 +261,26 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     <div class="animated-section">
             ${this.title && html`
               <div class="title-${this.positionText} animated-section__description-text ${addOpacity}">
-                  ${this.subtitle ? html`<h3>${this.subtitle}</h3>`: ''}
-                  <h2>${this.title}</h2> 
+                  ${this.subtitle ? html`<h3 part="section-subtitle">${this.subtitle}</h3>`: ''}
+                  <h2 part="section-title">${this.title}</h2> 
               </div> `}
-            <p class="text-${this.positionText} animated-section__description-text ${addOpacity}">
+            <p class="text-${this.positionText} animated-section__description-text ${addOpacity}"
+            part="section-description">
                 ${this.descriptionText}
             </p> 
             ${this.urlLink && html`
               <a
-                class="link-${this.positionText}  animated-section__description-text link--raised link--text-large ${addOpacity}"
+                class="link-${this.positionText}  animated-section__description-text link--text ${addOpacity}"
+                part="section-link"
                 target="_blank"
                 href="${this.urlLink.href}">
                 ${this.urlLink.content}
             </a>
             `}
         ${this.imageData && html`
-          <img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" src="${this.imageData.src}" alt="${this.imageData.alt}" />
+          <img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" 
+          part="section-media"
+          src="${this.imageData.src}" alt="${this.imageData.alt}" />
         `}
 
         ${this.videoData ? this.renderVideoOptions() : '' }
