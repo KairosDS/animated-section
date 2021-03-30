@@ -141,6 +141,8 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
        */
       animation: {
         type: Boolean,
+        attribute: 'animation', 
+        reflect: true
       },
     };
   }
@@ -163,6 +165,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
+    console.log(this.animation)
     const childNodes = this._HTMLChildren();
     const dataSection = childNodes[0];
     this.title = dataSection.sectionTitle;
@@ -170,7 +173,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     this.descriptionText = dataSection.sectionText;
     this.imageData = dataSection.sectionImage;
     //this.imageDataTwo = dataSection.src;
-    //this.videoData = dataSection.video;
+    this.videoData = dataSection.video;
     this.urlLink = dataSection.sectionLink;
     //this.motionVideo = matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
@@ -219,35 +222,37 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
   }
 
   firstUpdated() {
-    window.innerWidth < 768 ? null : this.animationPicture();
+    if(window.innerWidth > 768 && this.animation){
+      this.animationPicture();
+    }
   }
 
 
   get renderDesktopView() {
+    const addOpacity = this.animation ? 'no_opacity' : '' ; 
     return  html`
     <div class="animated-section">
             ${this.title && html`
-            <kw-title class="title-${this.positionText} animated-section__description-text">
-                <h3>${this.subtitle}</h3>
-                <h2>${this.title}</h2> 
-            </kw-title>
-            `}
-           <p  class="text-${this.positionText}
-           animated-section__description-text">
+              <div class="title-${this.positionText} animated-section__description-text ${addOpacity}">
+                  ${this.subtitle ? html`<h3>${this.subtitle}</h3>`: ''}
+                  <h2>${this.title}</h2> 
+              </div> `}
+            <p class="text-${this.positionText} animated-section__description-text ${addOpacity}">
                 ${this.descriptionText}
             </p> 
             ${this.urlLink && html`
               <a
-                class="link-${this.positionText}  animated-section__description-text link--raised link--text-large"
+                class="link-${this.positionText}  animated-section__description-text link--raised link--text-large ${addOpacity}"
                 target="_blank"
                 href="${this.urlLink.href}">
                 ${this.urlLink.content}
             </a>
             `}
-        ${this.imageData && html`<img class="animated-section__picture-animation media-${this.positionText}" src="${this.imageData.src}" alt="${this.imageData.alt}" />
+        ${this.imageData && html`
+          <img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" src="${this.imageData.src}" alt="${this.imageData.alt}" />
         `}
         ${this.videoData &&  html`
-          <video class="animated-section__picture media-${this.positionText}"  muted >
+          <video class="animated-section__picture media-${this.positionText} ${addOpacity}"  muted >
             <source src="${this.videoData.src}" type="${this.videoData.type}">
            </video>
           `}
@@ -255,7 +260,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     `;
   }
 
-  // ToDo add the functionality to start animation with view the component
   render() {
     return html` ${this.renderDesktopView}
     `;
