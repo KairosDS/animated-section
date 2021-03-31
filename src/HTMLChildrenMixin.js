@@ -5,15 +5,6 @@ export const HTMLChildrenMixin = (SuperClass) => {
       this.HTMLAttributesToExtract = ['A', 'IMG', 'LI', 'VIDEO'];
     }
   
-    extractHTMLDataAttributes(el) {
-      this.HTMLAttr = {};
-      const dataAttrArr = Object.keys(el.dataset);
-      dataAttrArr.forEach((dataAttr) => {
-        this.HTMLAttr[dataAttr] = el.dataset[dataAttr];
-      });
-      return this.HTMLAttr;
-    }
-  
     extractHTMLAttributes(el) {
       this.HTMLAttr = {};
       const attrs = Array.prototype.slice.call(el.attributes);

@@ -128,45 +128,44 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
   
 
-    animationPicture() {
-      if (this.animation){
-          const section = this.shadowRoot.querySelector('.animated-section')
-          const picture =this.shadowRoot.querySelector('.animated-section__picture-animation');
-          const description = [...this.shadowRoot.querySelectorAll('.animated-section__description-text')];
-          const video = this.shadowRoot.getElementById('videoSection')
-          const videoData = this.videoData;
-          const videoMotion = this.motionVideo;
-          const classAnimatedPicture= `move-${this.positionText}`
-          const options = {
-            threshold: 0.8,
-          };
-    /* eslint-disable-next-line */
-      function callBack(entries, observer) {
-        if (entries[0].isIntersecting) {
-          picture.classList.add(classAnimatedPicture);
-          description.forEach((item)=>{
-            item.classList.add('move_ascension__animation')
-          })
-          if(videoData){
-              if(videoMotion){
-                return null
-              }
-              else if(video.hasAttribute('ended')){
-                video.pause();
-              } else {
-                setTimeout(function() {
-                  video.play();
-                  video.setAttribute('ended', '');
-                }, 2000);
-              }
-            
-          }        
+  animationPicture() {
+    const section = this.shadowRoot.querySelector('.animated-section');
+    const picture =this.shadowRoot.querySelector('.animated-section__picture-animation');
+    const description = [...this.shadowRoot.querySelectorAll('.animated-section__description-text')];
+    const video = this.shadowRoot.getElementById('videoSection');
+    const classAnimatedPicture= `move-${this.positionText}`;
+    
+    const options = {
+      threshold: 0.8,
+    };
+
+  function callBack(entries, observer) {
+    if (entries[0].isIntersecting) {
+      picture.classList.add(classAnimatedPicture);
+      description.forEach((item)=>{
+        item.classList.add('move_ascension__animation');
+      })
+
+      if(video){
+          if(this.motionVideo){
+            return null
           }
-        }
+          else if(video.hasAttribute('ended')){
+            video.pause();
+            console.log('start')
+          } else {
+            setTimeout(function() {
+              video.play();
+              console.log('hols')
+              video.setAttribute('ended', '');
+            }, 2000);
+          }
+        }        
+      }
+    }
       
     const animationObserver  = new IntersectionObserver(callBack, options);
     animationObserver.observe(section);
-  }
   }
 
   firstUpdated() {
@@ -191,7 +190,7 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     }
   }
 
-  get renderDesktopView() {
+  render() {
     const addOpacity = this.animation ? 'no_opacity' : '' ; 
     return  html`
     <div class="animated-section">
@@ -221,11 +220,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
 
         ${this.videoData ? this.renderVideoOptions() : '' }
   </div> 
-    `;
-  }
-
-  render() {
-    return html` ${this.renderDesktopView}
     `;
   }
 }
