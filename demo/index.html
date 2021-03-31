@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <title>animated-section demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script type="module" src="../animated-section.js"></script>
+    <style>
+      :root {
+        --main-font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+        --grid-desktop-column-width: auto;
+        --grid-column-gap: 20px; 
+
+      }
+      .blocks {
+       
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+      }
+      .block {
+        display:flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+      .code {
+        padding: 20px;
+        color:#FFF; 
+        background: rgb(0, 0, 0);
+      }
+      .attributes {
+        padding-left: 20px;
+      } 
+
+      .animated-section-container {
+        margin: 0 10px;
+      }
+
+      .container-scroll {
+        height: 200px;
+        background-color: antiquewhite;
+        margin: 40px 0;
+      }
+      /* .div-hidden{
+        display: none;
+      } */
+
+      animated-section::part(section-title){
+        color: rgb(49, 49, 49);
+        margin: 0;
+        margin-bottom: 30px;
+      }
+      animated-section::part(section-subtitle){
+        color: rgb(223, 156, 13);
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      animated-section::part(section-description){
+        color: rgb(55, 55, 58);
+      }
+
+      animated-section::part(section-link){
+        color: rgb(247, 247, 250);
+        background-color: rgb(20, 4, 79);
+        border: 1px solid  rgb(20, 4, 79);
+      }
+
+      animated-section::part(section-link):hover{
+        color: rgb(19, 5, 5);
+        background-color: rgb(223, 156, 13);
+        border: 1px solidrgb(223, 156, 13);
+      }
+
+      animated-section::part(section-media){
+        width: 100%;
+      }
+      @media all and (min-width: 760px) {
+        .animated-section-container {
+        margin: 0 100px;
+      }
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic animated-section Demo</h3>
+      <div class="blocks">
+        <pre class="block code">
+          <code>
+            &lt;animated-section&gt;&lt;/animated-section&gt;
+          </code>
+        </pre>
+        <pre class="block attributes">
+          <h3>Attributes</h3>
+          <ul>
+            <li>animation (Boolean)</li>
+            <li>position-text (Options: {after|before})</li>
+          </ul>
+        </pre>
+      </div>
+
+    <div class="animated-section-container">
+        <h2>EJEMPLO Animated Section</h2>
+        <div class="container-scroll"></div>
+      <animated-section animation="true" position-text="before">
+        <div class="div-hidden">
+          <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+            <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+            <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+            <img data-id="sectionImage" src="/demo/assets/default.png" alt="IMAGE" />
+            <a data-id="sectionLink" href="/">SECTION-LINK</a>
+          </div>
+      </animated-section>
+      <div class="container-scroll"></div>
+      <animated-section position-text="after">
+        <div class="div-hidden">
+          <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+            <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+            <img data-id="sectionImage" src="/demo/assets/400x200default.png" alt="IMAGE" />
+          </div>
+      </animated-section>
+      <div class="container-scroll"></div>
+      <animated-section position-text="after" animation="true">
+        <div class="div-hidden">
+          <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+          <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+            <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+            <img data-id="sectionNoVideoMobile" src="/demo/assets/400x200default.png" alt="IMAGE" />
+            <video data-id="sectionVideo" src="/demo/assets/Globe12486.mp4" alt="video mimundo" type="video/mp4" ></video>
+          </div>
+      </animated-section>
+      </div>
+  </body>
+</html>
