@@ -1,6 +1,5 @@
 import { html, LitElement } from 'lit-element';
 import { AnimatedSectionStyles } from './animated-section-style';
-import { classMap } from 'lit-html/directives/class-map';
 import { HTMLChildrenMixin } from './HTMLChildrenMixin';
 
 /**

@@ -1,85 +1,82 @@
 # animated-section
 
-Lit-Element web component animated section.
-
+Lit-Element web component animated section, the animation starts when the section comes into focus by scrolling down the screen.
 
 The data is passed using the content of the html code inside the component. The following structure should be used with the same data-id names:
 
 ```
 <animated-section>
-  
+  <div>
+    <h2 data-id="sectionTitle"></h2>
+    <h3 data-id="sectionSubTitle"></h3>
+    <p data-id="sectionText"></p>
+    <img data-id="sectionImage" src="" alt="" />
+    <a data-id="sectionLink" href=""></a>
+    <img data-id="sectionNoVideoMobile" src="" alt="" />
+    <video data-id="sectionVideo" src="" alt="" type="" ></video>
+  </div>
 </animated-section>
 
 ```
-
-* Optional tabs items:
-      * data-id="subTitle"
-      * data-id="image"
-      * data-id="url"
-
-## There are three views in the component that are controlled by using the attributes:
-
-### animated-section no attribute
-<img src="demo/assets/animated-section.png" alt="Scroll tabs" style=" margin-right: 10px; width:450px;" />
-
-### Tabs scroll-tabs="true"
-<img src="demo/assets/scroll-tabs.png" alt="Scroll tabs" style=" margin-right: 10px; width:500px;" />
-<img src="demo/assets/movil-scroll.png" alt="Scroll tabs" style=" margin-right: 10px; height: 355px" />
-
-### Tabs collapsible-tabs="true"
-<img src="demo/assets/movil-collapsable.png" alt="Scroll tabs" style=" margin-right: 10px; height: 400px" />
-
+Optional animated-section items:
+  * data-id="sectionSubTitle"
+  * data-id="sectionImage"
+  * data-id="sectionLink"
+  * data-id="sectionNoVideoMobile"
+  * data-id="sectionVideo"
 
 ## Demo
 
-```
-<h2>Basic animated-section Demo</h2>
-<h3>Demo</h3>
-<animated-section>
-        <div data-id="icons">
-          <button>
-            <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab1" id="tab-1"/>
-          </button>
-          <button>
-            <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab2" id="tab-2"/>
-          </button>
-          <button>
-            <img data-id="iconImage" src="/demo/assets/person1.svg" alt="abre" data-content="tab3" id="tab-3"/>
-          </button>
-        </div>
-        <div data-id="tabs">
-          <div>
-            <h3 data-id="title">titletab1</h3>
-            <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit.; Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.; Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor rerum perferendis, nihil molestias consectetur illo enim perspiciatis molestiae mollitia quis veritatis suscipit iste necessitatibus dolorum hic fugit, sunt ut minus.</div>
-            <img data-id="image" src="https://picsum.photos/seed/picsum/500/400" alt=""/>
-            <a data-id="url" href="/">linktab</a>
-          </div>
-          <div>
-            <h3 data-id="title">titletab2</h3>
-            <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur.; Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img data-id="image" src="https://picsum.photos/seed/picsum/100/200" alt=""/>
-            <a data-id="url" href="/">linktab</a>
-          </div>
-          <div>
-            <h3 data-id="title">titletab3</h3>
-            <div data-id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora veniam eius ratione ab corporis sint mollitia, delectus nisi magni consequatur. Animi voluptatem neque odit ea quam soluta necessitatibus at facilis.</div>
-            <img data-id="image" src="" alt=""/>
-            <a data-id="url" href="/">linktab</a>
-          </div>
-        </div>
-      </animated-section>
+<img src="demo/assets/section-image.png" alt="Image demo">
 
+### animated-section no imagen
 ```
-<!---
+<animated-section animation="true" position-text="before">
+  <div>
+    <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+      <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+      <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae,  praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+    </div>
+</animated-section>
 ```
-<custom-element-demo>
-  <template>
-    <link rel="import" href="animated-section.html">
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
+
+
+### animated-section with image and link 
 ```
--->
+<animated-section animation="true" position-text="before">
+    <div>
+      <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+        <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+        <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+        <img data-id="sectionImage" src="/demo/assets/default.png" alt="IMAGE" />
+        <a data-id="sectionLink" href="/">SECTION-LINK</a>
+      </div>
+  </animated-section>
+```
+### animated-section with video in mobile and desktop
+```
+<animated-section position-text="after" animation="true">
+  <div>
+    <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+    <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+      <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+      <video data-id="sectionVideo" src="/demo/assets/Globe12486.mp4" alt="video mimundo" type="video/mp4" ></video>
+    </div>
+</animated-section>
+```
+
+### animated-section with image in mobile and video in desktop
+```
+<animated-section position-text="after" animation="true">
+  <div>
+    <h2 data-id="sectionTitle">SECTION-TITLE</h2>
+    <h3 data-id="sectionSubTitle">SUBTITLE</h3>
+      <p data-id="sectionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum aliquam iure sapiente, repellat totam veritatis beatae, praesentium eos voluptatem facilis! Ad doloribus cum, quod possimus laborum minus in sequi! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae laudantium deserunt id hic quam aliquam, iste consequatur asperiores, itaque mollitia error modi! Nisi quo voluptate cumque, obcaecati esse a iusto.</p>
+      <img data-id="sectionNoVideoMobile" src="/demo/assets/400x200default.png" alt="IMAGE" />
+      <video data-id="sectionVideo" src="/demo/assets/Globe12486.mp4" alt="video mimundo" type="video/mp4" ></video>
+    </div>
+</animated-section>
+```
 
 ```html
 <animated-section></animated-section>
@@ -87,36 +84,30 @@ The data is passed using the content of the html code inside the component. The 
 
 ## Properties
 
-|                   |  Attribute              |  Type    | Description			                                                                  |                 
-|-------------------|-------------------------|----------|------------------------------------------------------------------------------------|
-|listenOutsideEvent	|  listen-outside-event   |string    |Name of custom event to listen and change the selected tab depends on #id from url  |
-|collapsibleTabs    |  collapsible-tabs       |boolean   |True: tabs in mobile version as a collapsible                                       |
-|scrollTabs         |  scroll-tabs            |boolean   |True: icons from tabs in mobile version overflow-x with scroll                      |
-|iconMobileClose    |  icon-mobile-close      |string 	 |Path of the close icon image in mobile version                                      |
-|imgIconSelected	  |  img-icon-selected      |string	   |Path of the icon to selected tab                                                    |
-|imgIconNotSelected |  img-icon-not-selected  |string	   |Path of the icon to not selected tab                                                |
-|breakLineSeparator |  break-line-separator   |string	   |String to indicate the element used to separate descriptions with break-line        |
+|                |  Attribute      |  Type                  | Description			                                                                      |                 
+|----------------|-----------------|------------------------|---------------------------------------------------------------------------------------|
+|animation       |  animation      |Boolen                  |True: section is animated                                                              |
+|positionText    |  position-text  |Options: {after\|before} |After: text is positioned left the image - Before: text is positioned rigth the image  |
 
 
 ## CSS Custom Properties
 
-|      Name                 |  Description                          
-|---------------------------|-----------------------------------------------------|
-|--main-font-family		      |  Font-family to the main component                  |
-|--base-font-size           |  Font-size to the main component                    |
-|--main-color               |  Main color to the border top and principal title   |
-|--secondary-color          |  Color to subtitle                                  |
-|--main-text-color  	      |  Text color component                               |
-|--secondary-text-color   	|  Text color button tab                              |
-|--button-font-color   	    |  Text color link-button                             |
-|--button-font-family     	|  Font family link-button                            |
-|--button-font-size   	    |  Font size link-button                              |
-|--button-line-height   	  |  Line height link-button                            |
-|--button-tab-width-mobile  |  Tab width button in mobile                         |
-|--button-tab-width-desktop |  Tab width button in desktop                        |
-|--button-img-tab-height   	|  Image tab height button                            |      
 
+|      Name                    |  Description                          
+|-----------------------------|---------------------------------------------------------|
+|--main-font-family		        |  Font-family to the main component                      |
+|--grid-desktop-column-width  |  Column width of grid layout in desktop; Deafult is auto|
+|--grid-column-gap            |  Column gap  width of grid layout in desktop            |    
 
+## CSS Shadow Parts
+
+|      Name            |  Description                          
+|----------------------|----------------------------------------------------------|
+|section-title		     |The title of the section                                  |
+|section-subtitle      |The subtitle of the section                               |
+|section-description   |The description text  of the section                      |
+|section-link   	     |The link of the section                                   |
+|section-media  	     |The image/video of the section                            |
 
 
 
@@ -142,9 +133,8 @@ $ npm run test
 $ npm run build
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+## Author
 
-##Author
 **KairósDS Team**
 
 ## License
