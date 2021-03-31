@@ -87,8 +87,7 @@ Optional animated-section items:
 |                |  Attribute      |  Type                  | Description			                                                                      |                 
 |----------------|-----------------|------------------------|---------------------------------------------------------------------------------------|
 |animation       |  animation      |Boolen                  |True: section is animated                                                              |
-|positionText    |  position-text  |Options: {after\|before} |After: text is positioned left the image - Before: text is positioned rigth the image  |
-
+|positionText    |  position-text  |Options: {after\|before}|After: the text is positioned to the left of the image <br>Before: the text is positioned to the right of the image 
 
 ## CSS Custom Properties
 
@@ -96,7 +95,7 @@ Optional animated-section items:
 |      Name                    |  Description                          
 |-----------------------------|---------------------------------------------------------|
 |--main-font-family		        |  Font-family to the main component                      |
-|--grid-desktop-column-width  |  Column width of grid layout in desktop; Deafult is auto|
+|--grid-desktop-column-width  |  Column width of grid layout in desktop; Default is auto|
 |--grid-column-gap            |  Column gap  width of grid layout in desktop            |    
 
 ## CSS Shadow Parts

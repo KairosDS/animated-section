@@ -132,13 +132,14 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     const picture =this.shadowRoot.querySelector('.animated-section__picture-animation');
     const description = [...this.shadowRoot.querySelectorAll('.animated-section__description-text')];
     const video = this.shadowRoot.getElementById('videoSection');
-    const classAnimatedPicture= `move-${this.positionText}`;
+    const classAnimatedPicture = `move-${this.positionText}`;
     
     const options = {
       threshold: 0.8,
     };
 
   function callBack(entries, observer) {
+    console.log(entries)
     if (entries[0].isIntersecting) {
       picture.classList.add(classAnimatedPicture);
       description.forEach((item)=>{
@@ -155,7 +156,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
           } else {
             setTimeout(function() {
               video.play();
-              console.log('hols')
               video.setAttribute('ended', '');
             }, 2000);
           }
@@ -176,49 +176,46 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
   renderVideoOptions() {
     const addOpacity = this.animation ? 'no_opacity' : '' ; 
     if(this.imageVideoData && window.innerWidth < 768){
-      return html `<img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}"
-      part="section-media" src="${this.imageVideoData.src}" alt="${this.imageVideoData.alt}" />`
-    
+        return html `<img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}"
+        part="section-media" src="${this.imageVideoData.src}" alt="${this.imageVideoData.alt}" />`
     } else {
-      return html `
-      <video id="videoSection" class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" 
-      part="section-media" muted >
-          <source src="${this.videoData.src}" type="${this.videoData.type}">
-      </video>
-      `
+        return html `
+        <video id="videoSection" class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" 
+        part="section-media" muted >
+            <source src="${this.videoData.src}" type="${this.videoData.type}">
+        </video>`
     }
   }
 
   render() {
     const addOpacity = this.animation ? 'no_opacity' : '' ; 
     return  html`
-    <div class="animated-section">
-            ${this.title && html`
-              <div class="title-${this.positionText} animated-section__description-text ${addOpacity}">
-                  ${this.subtitle ? html`<h3 part="section-subtitle">${this.subtitle}</h3>`: ''}
-                  <h2 part="section-title">${this.title}</h2> 
-              </div> `}
-            <p class="text-${this.positionText} animated-section__description-text ${addOpacity}"
-            part="section-description">
-                ${this.descriptionText}
-            </p> 
-            ${this.urlLink && html`
-              <a
-                class="link-${this.positionText}  animated-section__description-text link--text ${addOpacity}"
-                part="section-link"
-                target="_blank"
-                href="${this.urlLink.href}">
-                ${this.urlLink.content}
-            </a>
-            `}
-        ${this.imageData && html`
-          <img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" 
-          part="section-media"
-          src="${this.imageData.src}" alt="${this.imageData.alt}" />
+      <div class="animated-section">
+        ${this.title && html`
+          <div class="title-${this.positionText} animated-section__description-text ${addOpacity}">
+              ${this.subtitle ? html`<h3 part="section-subtitle">${this.subtitle}</h3>`: ''}
+              <h2 part="section-title">${this.title}</h2> 
+          </div> `}
+        <p class="text-${this.positionText} animated-section__description-text ${addOpacity}"
+        part="section-description">
+            ${this.descriptionText}
+        </p> 
+        ${this.urlLink && html`
+          <a
+            class="link-${this.positionText}  animated-section__description-text link--text ${addOpacity}"
+            part="section-link"
+            target="_blank"
+            href="${this.urlLink.href}">
+            ${this.urlLink.content}
+        </a>
         `}
-
-        ${this.videoData ? this.renderVideoOptions() : '' }
-  </div> 
+      ${this.imageData && html`
+        <img class="animated-section__picture-animation media-${this.positionText} ${addOpacity}" 
+        part="section-media"
+        src="${this.imageData.src}" alt="${this.imageData.alt}" />
+      `}
+      ${this.videoData ? this.renderVideoOptions() : '' }
+    </div> 
     `;
   }
 }
