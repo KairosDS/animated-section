@@ -139,7 +139,6 @@ export class AnimatedSection extends HTMLChildrenMixin(LitElement) {
     };
 
   function callBack(entries, observer) {
-    console.log(entries)
     if (entries[0].isIntersecting) {
       picture.classList.add(classAnimatedPicture);
       description.forEach((item)=>{
